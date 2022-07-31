@@ -10,5 +10,7 @@ namespace Inventory
         [SerializeField] private string itemName;
         [SerializeField] private int value;
         [SerializeField] private Sprite icon;
+        
+        
     }
 }
