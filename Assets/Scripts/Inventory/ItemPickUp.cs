@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickUp : MonoBehaviour
+namespace Inventory
 {
-    public Item Item;
-
-    public void PickUp()
+    public class ItemPickUp : MonoBehaviour
     {
-        InventoreManager.Instance.Add(Item);
-        Destroy(gameObject);
-    }
+        public Item Item;
 
-    private void OnMouseDown()
-    {
-        PickUp();
+        public void PickUp()
+        {
+            InventoreManager.Instance.Add(Item);
+            Destroy(gameObject);
+        }
+
+        private void OnMouseDown()
+        {
+            PickUp();
+        }
     }
 }
