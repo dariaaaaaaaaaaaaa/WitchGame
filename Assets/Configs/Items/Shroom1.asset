@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17e221bc4567a934fabdc382b6ad8c5d, type: 3}
-  m_Name: GreenObject
+  m_Name: Shroom1
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: Shroom1
   value: 0
-  icon: {fileID: 0}
+  icon: {fileID: -1129204206, guid: e5b1422573cf5a7479701ab8c89b87c5, type: 3}

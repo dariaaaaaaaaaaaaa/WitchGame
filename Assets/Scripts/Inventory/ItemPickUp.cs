@@ -1,14 +1,15 @@
+using InventoryBasic.Configs;
 using UnityEngine;
 
 namespace Inventory
 {
     public class ItemPickUp : MonoBehaviour
     {
-        public Item Item;
+        public ItemSettings itemSettings;
 
         public void PickUp()
         {
-            InventoreManager.Instance.Add(Item);
+            InventoreManager.Instance.Add(itemSettings);
             Destroy(gameObject);
         }
 

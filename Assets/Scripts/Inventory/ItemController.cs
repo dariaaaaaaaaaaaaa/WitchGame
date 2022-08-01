@@ -1,9 +1,10 @@
+using InventoryBasic.Configs;
 using UnityEngine;
 
 namespace Inventory
 {
     public class ItemController : MonoBehaviour
     {
-        public Item Item;
+        public ItemSettings itemSettings;
     }
 }

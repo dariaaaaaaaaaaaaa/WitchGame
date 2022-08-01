@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using InventoryBasic.Configs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ namespace Inventory
     public class InventoreManager : MonoBehaviour
     {
         public static InventoreManager Instance;
-        public List<Item> Items = new List<Item>();
+        public List<ItemSettings> Items = new List<ItemSettings>();
 
         public Transform ItemContent;
         public GameObject InventoryItem;
@@ -17,14 +18,14 @@ namespace Inventory
             Instance = this;
         }
 
-        public void Add(Item Item)
+        public void Add(ItemSettings itemSettings)
         {
-            Items.Add(Item);
+            Items.Add(itemSettings);
         }
 
-        public void Remove(Item Item)
+        public void Remove(ItemSettings itemSettings)
         {
-            Items.Remove(Item);
+            Items.Remove(itemSettings);
         }
 
         public void ListItems()
