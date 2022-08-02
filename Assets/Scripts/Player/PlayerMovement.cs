@@ -28,7 +28,13 @@ public class PlayerMovement : MonoBehaviour
         {
             y--;
         }
-        rb.velocity = new Vector2(x, y) * speed; 
+        var velocity = new Vector2(x, y);
+        if (velocity.magnitude > 1)
+        {
+            velocity /= 2;
+        }  
+        rb.velocity = velocity * speed; 
+
     }
 
 }

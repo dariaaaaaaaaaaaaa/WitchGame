@@ -157,7 +157,7 @@ MonoBehaviour:
   playerFollow: {fileID: 715511826}
   cameraTransform: {fileID: 293364802}
   offset: {x: 0, y: 0, z: -1}
-  smoothness: 3
+  smoothness: 1
 --- !u!81 &293364800
 AudioListener:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1484256815
 MonoBehaviour:
   m_ObjectHideFlags: 0
