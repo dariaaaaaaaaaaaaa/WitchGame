@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace InventoryBasic.Configs
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/ItemSettings")]
+    [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Items/ItemInfo")]
 
-    public class ItemSettings : ScriptableObject
+    public class ItemInfo : ScriptableObject
     {
         [SerializeField] private int id;
         [SerializeField] private string itemName;
@@ -15,5 +15,10 @@ namespace InventoryBasic.Configs
         public string ItemName => itemName;
         public int Value => value;
         public Sprite Icon => icon;
+        
+        public bool Equals(ItemInfo item)
+        {
+            return item && item.id == id;
+        }
     }
 }

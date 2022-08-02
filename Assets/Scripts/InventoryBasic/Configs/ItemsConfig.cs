@@ -7,9 +7,9 @@ namespace InventoryBasic.Configs
     [CreateAssetMenu(fileName = "ItemsConfig", menuName = "Inventory/Items/Config", order = 0)]
     public class ItemsConfig : ScriptableObject
     {
-        [SerializeField] private List<ItemSettings> items;
+        [SerializeField] private List<ItemInfo> items;
 
-        public ItemSettings GetItemSettings(int id)
+        public ItemInfo GetItemSettings(int id)
         {
             return items.FirstOrDefault(i => i.Id == id);
         }

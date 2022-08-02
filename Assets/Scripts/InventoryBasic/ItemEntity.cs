@@ -5,8 +5,8 @@ namespace InventoryBasic
 {
     public class ItemEntity : MonoBehaviour
     {
-        [SerializeField] private ItemSettings settings;
+        [SerializeField] private ItemInfo info;
 
-        public int Id => settings.Id;
+        public int Id => info.Id;
     }
 }

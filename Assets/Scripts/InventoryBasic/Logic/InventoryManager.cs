@@ -22,7 +22,7 @@ namespace InventoryBasic.Logic
 
         private InventoryManager()
         {
-            _inventoryHandler = new InventoryHandler(9);
+            _inventoryHandler = new InventoryHandler(9); //TODO ManagerReference :(
         }
 
         public void SetCurrentSlot(int slotId)
