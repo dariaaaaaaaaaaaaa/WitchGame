@@ -1,41 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
-
-    private void Update()
+    public class PlayerMovement : MonoBehaviour
     {
-        float upDown = Input.GetAxis("Vertical") * speed;
-        float leftRight = Input.GetAxis("Horizontal") * speed;
-        var x = 0f;
-       if (Input.GetKey(KeyCode.D))
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private float speed;
+        
+        private void Update()
         {
-            x++;
-        } else if (Input.GetKey(KeyCode.A))
-        {
-            x--;
+            var velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            velocity = velocity.magnitude > 1 ? velocity / 2 : velocity;
+            rb.velocity = velocity * speed;
         }
-        var y = 0f;
-        if (Input.GetKey(KeyCode.W))
-        {
-            y++;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            y--;
-        }
-        var velocity = new Vector2(x, y);
-        if (velocity.magnitude > 1)
-        {
-            velocity /= 2;
-        }  
-        rb.velocity = velocity * speed; 
-
     }
-
 }
- 
