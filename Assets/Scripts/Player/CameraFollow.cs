@@ -12,7 +12,7 @@ namespace Player
         void Update()
         {
             Vector3 target = playerFollow.position + offset;
-            Vector3 pos = Vector3.Lerp(cameraTransform.position, target, smoothness * Time.deltaTime);
+            Vector3 pos = Vector3.Lerp(cameraTransform.position, target, smoothness);
 
             transform.position = pos;
         }
