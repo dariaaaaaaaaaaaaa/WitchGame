@@ -32,11 +32,9 @@ namespace Inventory.UI
                 
                 var isEmpty = slotInfo.IsEmpty();
                 slotView.SetHasIcon(!isEmpty);
-                print(isEmpty);
                 if (!isEmpty)
                 {
                     var itemIcon = itemsConfig.GetItemSettings(slotInfo.Item).Icon;
-                    print(itemIcon);
                     slotView.SetIcon(itemIcon);
                 }
 

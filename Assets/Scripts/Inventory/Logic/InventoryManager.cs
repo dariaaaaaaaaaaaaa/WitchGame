@@ -95,6 +95,12 @@ namespace Inventory.Logic
             return _slots.Select(s => new SlotInfo(s)).ToList();
         }
 
+        public bool HasItem(ItemInfo item, int quantity)
+        {
+            var itemSlot = FirstSlot(item);
+            return itemSlot != default && itemSlot.Quantity >= quantity;
+        }
+
         private bool HasEmptySlot()
         {
             return FirstEmptySlot() != default;
