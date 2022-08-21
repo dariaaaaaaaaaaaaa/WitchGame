@@ -16,6 +16,7 @@ namespace Inventory.Logic
         public int CurrentSlot => _currentSlot;
         public int SlotsCount => _slots.Count;
 
+        public event Action OnUpdated;
         public event Action OnCurrentSlotChanged;
 
         public InventoryManager(int size)
@@ -29,8 +30,9 @@ namespace Inventory.Logic
             {
                 return;
             }
-            
+
             _currentSlot = slotId;
+            OnUpdated?.Invoke();
             OnCurrentSlotChanged?.Invoke();
         }
 
@@ -41,9 +43,12 @@ namespace Inventory.Logic
                 Debug.LogWarning(this, "No empty slots to add. Aborting");
                 return;
             }
+
+            UnityEngine.Debug.Log("Add" + item.ItemName);
             AddItem(item, FirstEmptySlot(), quantity);
+            OnUpdated?.Invoke();
         }
-        
+
         public void AddItemToSlot(ItemInfo item, int slotId, int quantity = 1)
         {
             if (!CheckValidSlotId(slotId))
@@ -57,7 +62,9 @@ namespace Inventory.Logic
                 Debug.LogWarning(this, $"Trying to add wrong item type {item.Id}. Aborting");
                 return;
             }
+
             AddItem(item, slot, quantity);
+            OnUpdated?.Invoke();
         }
 
         private void AddItem(ItemInfo item, InventorySlot slot, int quantity)
@@ -65,21 +72,39 @@ namespace Inventory.Logic
             slot.PutItems(item, quantity);
         }
 
-        public void DeleteItem()
+        public void DeleteItem(ItemInfo item)
         {
-            
+            FirstSlot(item).DeleteItem();
+            OnUpdated?.Invoke();
+        }
+
+        public void DeleteItem(int slotId)
+        {
+            GetSlot(slotId).DeleteItem();
+            OnUpdated?.Invoke();
+        }
+
+        public SlotInfo GetSlotInfo(int slotId)
+        {
+            var slot = GetSlot(slotId);
+            return new SlotInfo(slot);
+        }
+        
+        public List<SlotInfo> GetSlotsInfo()
+        {
+            return _slots.Select(s => new SlotInfo(s)).ToList();
         }
 
         private bool HasEmptySlot()
         {
-            return FirstEmptySlot() == default;
+            return FirstEmptySlot() != default;
         }
 
         private InventorySlot FirstEmptySlot()
         {
             return _slots.FirstOrDefault(slot => !slot.HasItem());
         }
-        
+
         private InventorySlot FirstSlot(ItemInfo item)
         {
             return _slots.FirstOrDefault(slot => slot.HasItem() && item.Equals(slot.Item));
@@ -89,13 +114,14 @@ namespace Inventory.Logic
         {
             return _slots.FirstOrDefault(slot => slot.Id == slotId);
         }
-        
+
         private bool CheckValidSlotId(int slotId)
         {
             if (IsValidSlotId(slotId))
             {
                 return true;
             }
+
             Debug.LogWarning(this, $"Slot {slotId} in non existing. Aborting");
             return false;
         }
@@ -104,6 +130,24 @@ namespace Inventory.Logic
         {
             return slotId >= 0 && slotId < SlotsCount;
         }
-        
+    }
+
+    public class SlotInfo
+    {
+        private InventorySlot _slot;
+
+        public int Id => _slot.Id;
+        public ItemInfo Item => _slot.Item;
+        public int Quantity => _slot.Quantity;
+
+        public bool IsEmpty()
+        {
+            return !_slot.HasItem();
+        }
+
+        public SlotInfo(InventorySlot slot)
+        {
+            _slot = slot;
+        }
     }
 }

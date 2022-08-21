@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameLogic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Inventory.UI
@@ -7,12 +8,23 @@ namespace Inventory.UI
     {
         [SerializeField] private int id;
         [SerializeField] private Image iconImage;
+        [SerializeField] private GameObject selectedView;
 
         public int Id => id;
 
-        public void SetActive(bool isActive)
+        public void SetSelected(bool isActive)
         {
-            iconImage.gameObject.SetActive(isActive);
+            selectedView.SetActive(isActive);
+        }
+
+        public void SetIcon(Sprite icon)
+        {
+            iconImage.sprite = icon;
+        }
+        
+        public void SetHasIcon(bool hasIcon)
+        {
+            iconImage.gameObject.SetActive(hasIcon);
         }
     }
 }

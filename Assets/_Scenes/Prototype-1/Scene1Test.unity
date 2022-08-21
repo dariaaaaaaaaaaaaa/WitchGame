@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 1345336122}
   - {fileID: 955667329}
   - {fileID: 638548374}
+  itemsConfig: {fileID: 11400000, guid: 535f1aea5fc49b5408b95cdc29b76bce, type: 2}
 --- !u!114 &34595348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a68a239de934396a7b402915bd4848b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
+  info: {fileID: 11400000, guid: 982d7fb9033d49f4b96e2c40a4cdd268, type: 2}
 --- !u!4 &375795589
 Transform:
   m_ObjectHideFlags: 0

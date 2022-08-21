@@ -13,5 +13,10 @@ namespace Inventory.Configs
         {
             return items.FirstOrDefault(i => i.Id == id);
         }
+        
+        public ItemInfo GetItemSettings(ItemInfo item)
+        {
+            return items.FirstOrDefault(i => i.Id == item.Id);
+        }
     }
 }
