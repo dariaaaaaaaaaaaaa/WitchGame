@@ -10,7 +10,6 @@ namespace Inventory.Logic
 {
     public class InventoryManager : IManager
     {
-
         private int _currentSlot;
         private List<InventorySlot> _slots;
 
@@ -64,6 +63,11 @@ namespace Inventory.Logic
         private void AddItem(ItemInfo item, InventorySlot slot, int quantity)
         {
             slot.PutItems(item, quantity);
+        }
+
+        public void DeleteItem()
+        {
+            
         }
 
         private bool HasEmptySlot()
