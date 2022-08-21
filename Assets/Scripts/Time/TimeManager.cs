@@ -22,17 +22,23 @@ namespace Time
 
         private void Start()
         {
+            _time = new DateTime(1, 1, 1, 6, 0, 0);
             StartCoroutine(CountTimeRoutine());
         }
 
         private IEnumerator CountTimeRoutine()
         {
-            while (true)
+            while (gameObject)
             {
                 yield return new WaitForSeconds(secondsInTick);
                 _time = _time.AddMinutes(10);
                 OnTick?.Invoke();
             }
+        }
+
+        public void NextDay()
+        {
+            _time = new DateTime(_time.Year, _time.Month, _time.Day + 1, 6, 0, 0);
         }
 
         public GameTime GetTime()

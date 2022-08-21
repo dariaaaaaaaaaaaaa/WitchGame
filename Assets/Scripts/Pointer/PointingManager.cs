@@ -43,10 +43,13 @@ namespace Pointer
 
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             var hit = Physics2D.Raycast(ray.origin, ray.direction, 2);
-            if (!hit.collider)
+            if (!hit.collider || !IsInReach(hit.collider))
             {
                 return;
             }
+
+            hit.collider.GetComponent<IPlayerInteractable>()?.Interact();
+
             OnClicked?.Invoke(hit.collider, IsInReach(hit.collider));
             print($"Clicked {hit.collider.name}, {IsInReach(hit.collider)}");
         }
