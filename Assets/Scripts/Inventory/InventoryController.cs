@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Core.ManagersSystem;
 using Inventory.Logic;
 using UnityEngine;
@@ -37,6 +38,14 @@ namespace Inventory
                     manager.SetCurrentSlot(nextCurrent);
                 }
                 yield return null;
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _inventoryManager.Value.DeleteItem(0); //TODO Remove after test
             }
         }
     }
