@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f054bd226e9da6b45a0ed46a1ab947c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneName: TestInventory
+  loadSceneName: Scene2Test
 --- !u!4 &1471451522
 Transform:
   m_ObjectHideFlags: 0
